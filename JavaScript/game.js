@@ -50,6 +50,15 @@ document.onkeyup = function(event){
   guessesLeft--;
 
   for( var i = 0; i < res.length; i++){
+    console.log(res[i]);
+
+  var resString = res.indexOf(userGuess);
+
+  console.log(resString);
+  }
+
+  if(resString > 0){
+    alert("Got one!");
   }
 
   /*
