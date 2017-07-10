@@ -1,5 +1,5 @@
 //Array to hold all of the different words that will be used in the game.
-var computerChoice =["football", "baseball", "soccer", "golf", "cricket", "water polo", "hockey", "volleyball", "cricket", "bowling", "ping pong", "tennis", "lacrosse", "surfing", "softball", "rugby", "curling"];
+var computerChoice =["football", "baseball", "soccer", "golf", "cricket", "hockey", "volleyball", "cricket", "bowling", "ping pong", "tennis", "lacrosse", "surfing", "softball", "rugby", "curling"];
 // Total Wins
 var wins = 0;
 
@@ -10,7 +10,7 @@ var losses = 0;
 var wordChosen =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
 // letters of chosen word in array
-var res = [];
+var newArray = [];
 //Amount of guesses that the person has left.
 var guessesLeft = 10;
 // Variable to show which guesses they have already made.
@@ -24,7 +24,7 @@ var underscores = [];
 // Reset function to run after certain conditions are met.
 var reset = function(){
 
-  res = wordChosen.split("");
+  newArray = wordChosen.split("");
   guessesLeft = 10
   guesses = [];
   wordChosen = computerChoice[Math.floor(Math.random() * computerChoice.length)];
@@ -49,20 +49,20 @@ document.onkeyup = function(event){
   //every time they hit a key the guesses will go down by one
   guessesLeft--;
 
-  for( var i = 0; i < res.length; i++){
-    console.log(res[i]);
+  for( var i = 0; i < newArray.length; i++){
+    console.log(newArray[i]);
 
-  var resString = res.indexOf(userGuess);
+    if(newArray[i] === userGuess){
+      alert("Got one!");
+    }
 
-  console.log(resString);
+
   }
 
-  if(resString > 0){
-    alert("Got one!");
-  }
+
 
   /*
-       res =         ["c", "r", "i", "c", "k", "e", "t"]
+       newArray =         ["c", "r", "i", "c", "k", "e", "t"]
        underscores = ["_", "_", "_", "_", "_", "_", "_"]
        index:          0    1    2    3    4    5    6
       Step 1: loop through the res array and check if the userGuess is equal to a letter.
@@ -82,6 +82,6 @@ document.onkeyup = function(event){
 
 reset();
 console.log(guesses);
-console.log(res);
+console.log(newArray);
 console.log(underscores);
-console.log(res.length);
+console.log(newArray.length);
