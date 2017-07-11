@@ -1,8 +1,9 @@
-var computerChoice =["football", "baseball", "soccer", "golf", "cricket", "hockey", "volleyball", "cricket", "bowling", "ping pong", "tennis", "lacrosse", "surfing", "softball", "rugby", "curling"];
+var computerChoice =["football", "baseball", "soccer", "golf", "cricket", "hockey", "volleyball", "cricket", "bowling", "tennis", "lacrosse", "surfing", "softball", "rugby", "curling"];
 
 var wins = 0;
 
 var losses = 0;
+
 var wordChosen =
   computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
@@ -11,12 +12,15 @@ var guessesLeft = 10;
 var guesses = [];
 
 var underscores = [];
-for( var i = 0; i <= wordChosen.length -1; i++){
+
+for ( var i = 0; i <= wordChosen.length -1; i++){
 underscores.push("_");
 }
 
+
+
 var reset = function(){
-  
+
   underscores = [];
   guessesLeft = 10
   guesses = [];
@@ -36,13 +40,12 @@ document.onkeyup = function(event){
 
   guessesLeft--;
 
-  if (wordChosen.indexOf(event.key) < 0 && userGuess.indexOf(event.key) < 0){
-    guessesLeft--;
-  }
 
   if (guessesLeft === 0){
-    losses ++;
-  }
+     document.getElementById("losses").innerHTML = losses++;
+     alert("Try again!")
+     reset();
+   }
 
   if(wordChosen.indexOf(userGuess) >-1 ) {
     for( var i=0; i <= (wordChosen.length-1); i++){
@@ -61,6 +64,7 @@ document.onkeyup = function(event){
 
   if (underscores.join("") === wordChosen){
     document.getElementById("wins").innerHTML = ++wins;
+    alert("You got it!");
     reset();
   }
 }
@@ -68,3 +72,4 @@ document.onkeyup = function(event){
 reset();
 console.log(guesses);
 console.log(underscores);
+console.log(losses);
