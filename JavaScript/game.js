@@ -38,11 +38,14 @@ document.onkeyup = function(event){
 
   guesses.push(userGuess);
 
-  guessesLeft--;
+
+if (wordChosen.indexOf(event.key) < 0){
+   guessesLeft--;
+ }
 
 
   if (guessesLeft === 0){
-     document.getElementById("losses").innerHTML = losses++;
+     document.getElementById("losses").innerHTML = ++losses;
      alert("Try again!")
      reset();
    }
@@ -65,6 +68,7 @@ document.onkeyup = function(event){
   if (underscores.join("") === wordChosen){
     document.getElementById("wins").innerHTML = ++wins;
     alert("You got it!");
+    guessesLeft--;
     reset();
   }
 }
